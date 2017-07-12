@@ -286,9 +286,9 @@ namespace CTRE.FRC
         
         public void SendBattery(float voltage)
         {
-            byte p1 = (byte)(int)voltage;
-            voltage -= (float)(p1 + 0.005);
-            byte p2 = (byte)(int)((voltage * 10) * 255);
+            ushort voltage_Q8dot8 = (ushort)(voltage * 256);
+            byte p1 = (byte)(voltage_Q8dot8 >> 8);
+            byte p2 = (byte)(voltage_Q8dot8 );
             _sendingMessage = combine(_sendingMessage, (new byte[] { 0x33, (byte)'b', 0x02, (byte)p1, (byte)p2 }));
         }
 

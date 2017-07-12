@@ -29,7 +29,7 @@ namespace Mechanum_Fun
             while(true)
             {
                 ds.update();
-                ds.SendBattery(12.34f);
+                ds.SendBattery(leftF.GetBusVoltage());
                 float t = deltaTime();
                 CTRE.FRC.DriverStation.State s = ds.GetState();
                 if (ds.IsEnabled())
