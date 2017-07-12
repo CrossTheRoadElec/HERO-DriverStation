@@ -1,5 +1,5 @@
 # What is the Driver Station?
-The driver station is a program created by FIRST that allows teams to control their robot wirelessly through a 2.4ghz WiFi radio.
+The driver station is a program created by FIRST that allows teams to control their robot wirelessly through a WiFi radio.
 Normally, the driver station is allowed only to work with the RoboRIO and its own Driver station class, which handles the UDP frames by itself.
 The software in this repo is what is needed to make an [ESP12F module](http://www.ctr-electronics.com/gadgeteer-wifi-module.html#product_tabs_technical_resources) along with a [HERO development board](http://www.ctr-electronics.com/hro.html) to talk with the Driver station and provide enough functionality to get a robot to drive using the driver station.
 # Quick Start Guide
