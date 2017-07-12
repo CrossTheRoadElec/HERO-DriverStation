@@ -7,7 +7,7 @@ The software in this repo is what is needed to make an [ESP12F module](http://ww
 2. Connect ESP Module to port 1 of HERO.
 3. Open and Deploy HERO_ESP_Writer project to HERO.
 4. Keep an eye on the Output Tab to ensure the file is written.  <img src="Documentation/SuccessfulFlash.png" width="900"/>
-5. Once the Module is flashed, connect to its WiFi. The password is "password1".
+5. Once the Module is flashed, connect to its WiFi to SSID "CTRE Radio". The password is "password1".
 6. Set computer to static IP (Process below).
 7. Deploy HERO_DriverStationExample to HERO.
 8. Open FRC Driver station.
