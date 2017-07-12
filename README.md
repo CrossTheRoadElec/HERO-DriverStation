@@ -1,5 +1,5 @@
 # What is the Driver Station?
-The driver station is a program created by FIRST that allows teams to control their robot wirelessly through a 2.4ghz Wifi radio.
+The driver station is a program created by FIRST that allows teams to control their robot wirelessly through a 2.4ghz WiFi radio.
 Normally, the driver station is allowed only to work with the RoboRIO and its own Driver station class, which handles the UDP frames by itself.
 The software in this repo is what is needed to make an [ESP12F module](http://www.ctr-electronics.com/gadgeteer-wifi-module.html#product_tabs_technical_resources) along with a [HERO development board](http://www.ctr-electronics.com/hro.html) to talk with the Driver station and provide enough functionality to get a robot to drive using the driver station.
 # Quick Start Guide
@@ -65,13 +65,13 @@ Software wise, a new firmware image needs to be flashed onto the ESP module, but
 ### Process for flashing the Module with HERO
 Look at Quick Start Guide above
 ### Process for flashing the module OTA
-Connect to the module over wifi and find its IP. Put the IP into a web browser of your choice, and append /update onto the address. You will be presented with two buttons, click the left one, choose the bin file, and click update. The bin file will be uploaded to the module and flashed by itself
+Connect to the module over WiFi and find its IP. Put the IP into a web browser of your choice, and append /update onto the address. You will be presented with two buttons, click the left one, choose the bin file, and click update. The bin file will be uploaded to the module and flashed by itself
 # How to use the Driver Station
 An example project is included that shows how to use the driver station class. The basic steps are:
 
 *Define the Driver Station object, specify a port*
 ```c#
-  CTRE.FRC.DriverStation ds = new CTRE.FRC.DriverStation(new new CTRE.HERO.Port1Definition());
+  CTRE.FRC.DriverStation ds = new CTRE.FRC.DriverStation(new CTRE.HERO.Port1Definition());
 ```
 *Define a controller using the Driver Station object as your provider*
 ```c#
@@ -92,15 +92,15 @@ An example project is included that shows how to use the driver station class. T
   ds.SendUDP(1234, BitConverter.UTF8.GetBytes("This is sent through UDP"));
 ```
 # Key notes in the Firmware
-The Module firmware currently hard codes the SSID and Password into the module. If you would like to change that, or do anything else with the firmware, you are free to. For SSID and Password it is inside the setup function under the function WiFi.softAP, use the search function to find it. In order to flash the module with the new firmware, follow these next few steps.
+The Module firmware currently hard codes the SSID and Password into the module. If you would like to change that, or do anything else with the firmware, you are free to. For SSID and Password it is inside the setup function under the function wifi.softAP, use the search function to find it. To flash the module with the new firmware, follow these next few steps.
 1. Run the Binary Splitter project, and point to the bin file from the arduino compile
 2. Find the 11 bin files the project will spit out.
-3. Open the wifi esp flasher project
+3. Open the WiFi esp flasher project
 4. Right click on the project under project view, and go into properties
 5. Go under the resources tab, in the upper left there is a drop down, make sure it's set to files
 6. Delete all the files inside the viewer
 7. Copy and paste the 11 bin files you found earlier into the viewer, click ok to every prompt
-8. Save the properties and run the program as if you were flashing the wifi module normally.
+8. Save the properties and run the program as if you were flashing the WiFi module normally.
 9. You're good to go
 # How this works
 The Driver station's protocol for sending data is largely hidden behind the scenes. Using a program called [Wireshark](https://www.wireshark.org/) I was able to find the individual datagrams and figure out what each byte meant, along with the ports the Driver station expects to use for transmitting and receiving data.
@@ -141,10 +141,10 @@ The ESP's protocol to flashing an image into its flash is controlled through a R
 3. Erase flash on module - Another packet is sent that specifies the amount of space needed for the flash
 4. Send .bin contents - Multiple packets are sent with the .bin contents inside them
 5. Close the bootloader - A single packet is sent with the end command to take the module out of bootloader mode.
-### Firmware protococol
+### Firmware protocol
 For those wanting to create their own flashing tool, this may prove helpful
 #### Packet header protocol
-Largely based off [this](http://domoticx.com/esp8266-esptool-bootloader-communicatie/) sheet, it details exactly what is needed in the packet header and how to go about flashing the firmmware.
+Largely based off [this](http://domoticx.com/esp8266-esptool-bootloader-communicatie/) sheet, it details exactly what is needed in the packet header and how to go about flashing the firmware.
 
 Key notes: 
 * The module uses [SLIP](https://en.wikipedia.org/wiki/Serial_Line_Internet_Protocol) protocol, which means except for the header and footer, there are no 0xC0's in the packets, and so they must be replaced if they are needed.
@@ -152,6 +152,6 @@ Key notes:
 * Length of data is calculated before the SLIP framing
 * You must make sure the other end is done talking before you can talk yourself
 * Currently the amount of Flash to be erased is hard coded in this code, if you want to flash a large file you must change that byte word yourself
-* I have only encounted two kinds of errors from the module, a 0x01 0x07 & 0x01 0x05
+* I have only encountered two kinds of errors from the module, a 0x01 0x07 & 0x01 0x05
   * 0x07 - Not fatal, module can still be flashed (I believe it is warning the flasher that it is currently downloading the last bin packet)
-  * 0x05 - Fatal, module must be reflashed (I believe it is a checksum error)
+  * 0x05 - Fatal, module must be re-flashed (I believe it is a checksum error)
