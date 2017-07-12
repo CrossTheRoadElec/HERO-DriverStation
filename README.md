@@ -68,7 +68,7 @@ An example project is included that shows how to use the driver station class. T
 
 *Define the Driver Station object, specify a port*
 ```c#
-  CTRE.FRC.DriverStation ds = new CTRE.FRC.DriverStation(new CTRE.HERO.Port1Definition());
+  CTRE.FRC.DriverStation ds = new CTRE.FRC.DriverStation(CTRE.HERO.IO.Port1);
 ```
 *Define a controller using the Driver Station object as your provider*
 ```c#
