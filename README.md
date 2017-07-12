@@ -88,19 +88,19 @@ An example project is included that shows how to use the driver station class. T
   ds.SendBattery(12.34f);
   ds.SendUDP(1234, BitConverter.UTF8.GetBytes("This is sent through UDP"));
 ```
-# Key notes in the Firmware
-The Module firmware currently hard codes the SSID and Password into the module. If you would like to change that, or do anything else with the firmware, you are free to. For SSID and Password it is inside the setup function under the function wifi.softAP, use the search function to find it. To flash the module with the new firmware, follow these next few steps.
-1. Run the Binary Splitter project, and point to the bin file from the arduino compile
+# Key notes in the Module Firmware (ESP_DriverStation_Source.ino)
+The Module firmware currently has the SSID and password hardcoded.  If you would like to change them, or do anything else with the firmware, you must recompile the Arduino code loaded into the WiFi Module. The SSID and Password and set in the setup function under the function wifi.softAP.  To flash the module with the new firmware, follow these next few steps.
+1. Run the Binary Splitter project, and point to the bin file from the arduino compile.
 2. Find the 11 bin files the project will spit out.
-3. Open the WiFi esp flasher project
-4. Right click on the project under project view, and go into properties
-5. Go under the resources tab, in the upper left there is a drop down, make sure it's set to files
-6. Delete all the files inside the viewer
-7. Copy and paste the 11 bin files you found earlier into the viewer, click ok to every prompt
+3. Open the WiFi esp flasher project.
+4. Right click on the project under project view, and go into properties.
+5. Go under the resources tab, in the upper left there is a drop down, make sure it's set to files.
+6. Delete all the files inside the viewer.
+7. Copy and paste the 11 bin files you found earlier into the viewer, click ok to every prompt.
 8. Save the properties and run the program as if you were flashing the WiFi module normally.
 9. You're good to go
 # How this works
-The Driver station's protocol for sending data is largely hidden behind the scenes. Using a program called [Wireshark](https://www.wireshark.org/) I was able to find the individual datagrams and figure out what each byte meant, along with the ports the Driver station expects to use for transmitting and receiving data.
+The Driver station's protocol for sending data is not publicly documented. Using a program called [Wireshark](https://www.wireshark.org/) I was able to find the individual datagrams and figure out what each byte meant, along with the ports the Driver station expects to use for transmitting and receiving data.
 
 Further documentation on this topic is inside the documentation folder, including a wireshark capture of the roborio-dashboard discussion over USB.
 ## Datagram breakdown
@@ -132,7 +132,7 @@ Below is a picture of a capture from Wireshark with the UDP packet from the comp
 
 
 ## Firmware Flashing
-The ESP's protocol to flashing an image into its flash is controlled through a ROM bootloader. This bootloader expects certain packets to come in, with details on the packet in the packet header. The overall process for flashing an image is
+The ESP's protocol to flash an image into its program memory is controlled through a ROM bootloader. This bootloader expects certain packets to come in, with details on the packet in the packet header. The overall process for flashing an image is
 1. Put ESP into bootloader mode by pulling GPIO0 down (Pin 3 on the HERO Gadgeteer port) and resetting the module by pulling RESET down (Pin 6 on the HERO)
 2. Sync baud rate of ESP to baud rate on flasher - this is done using a special packet that sends AA to the module multiple times
 3. Erase flash on module - Another packet is sent that specifies the amount of space needed for the flash
