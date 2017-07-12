@@ -3,20 +3,16 @@ The driver station is a program created by FIRST that allows teams to control th
 Normally, the driver station is allowed only to work with the RoboRIO and its own Driver station class, which handles the UDP frames by itself.
 The software in this repo is what is needed to make an [ESP12F module](http://www.ctr-electronics.com/gadgeteer-wifi-module.html#product_tabs_technical_resources) along with a [HERO development board](http://www.ctr-electronics.com/hro.html) to talk with the Driver station and provide enough functionality to get a robot to drive using the driver station.
 # Quick Start Guide
-1. Ensure HERO is imaged with latest firmware, see below for instructions on flashing the latest firmware
-2. Connect ESP Module to port 1 of HERO
-3. Deploy HERO_ESP_Writer project to HERO
-4. Keep an eye on the logs to ensure the file is written
-5. Once the Module is flashed, connect to its WiFi. The password is "password1"
-6. Set computer to static IP (Process below)
-7. Deploy HERO_DriverStationExample to HERO
-8. Open FRC Driver station
-9. Put in team 33
-10. You're good to go
-
-This is what a successful module flash looks like
-
-<img src="Documentation/SuccessfulFlash.PNG" width="900"/>
+1. Ensure HERO is imaged with latest firmware, see below for instructions on flashing the latest firmware.
+2. Connect ESP Module to port 1 of HERO.
+3. Open and Deploy HERO_ESP_Writer project to HERO.
+4. Keep an eye on the Output Tab to ensure the file is written.  <img src="Documentation/SuccessfulFlash.PNG" width="900"/>
+5. Once the Module is flashed, connect to its WiFi. The password is "password1".
+6. Set computer to static IP (Process below).
+7. Deploy HERO_DriverStationExample to HERO.
+8. Open FRC Driver station.
+9. Put in team 33.
+10. You're good to go.
 
 ## Setting Computer to static IP
 1. Right click on wireless connections, the button you pressed to connect to the module
