@@ -66,7 +66,7 @@ Connect to the module over WiFi and find its IP. Put the IP into a web browser o
 # How to use the Driver Station
 An example project is included that shows how to use the driver station class. The basic steps are:
 
-*Define the Driver Station object, specify a port*
+*Create the Driver Station object, pass in the HERO port that the WiFi module is plugged into.  Port must be a 'U' port.*
 ```c#
   CTRE.FRC.DriverStation ds = new CTRE.FRC.DriverStation(CTRE.HERO.IO.Port1);
 ```
