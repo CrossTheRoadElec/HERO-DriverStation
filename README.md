@@ -53,6 +53,7 @@ For more information on flashing the HERO, go [here](http://www.ctr-electronics.
 * Documentation - Folder for pictures and files that show how this was created
 * ESP_DriverStation_Source - Arduino source code for ESP module that enables driver station
 * HERO_DriverStationExample - Example project for enabling the driver station and controlling a robot using Arcade drive
+* HERO_MecanumPigeon - Example project for a mecanum drive with [Pigeon IMU](http://www.ctr-electronics.com/gadgeteer-imu-module-pigeon.html) closed-looping to maintain heading.
 * HERO_ESP_Writer - Project that flashes the bin files to the ESP module
 # What is needed for functionality?
 All the hardware needed for this functionality is the HERO board and an ESP12F module along with a ribbon cable connecting the two.
